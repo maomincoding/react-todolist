@@ -1,0 +1,12 @@
+body,html,ul {
+  margin: 0;
+  padding: 0;
+  background: #e6e7e8;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+li{
+  list-style: none;
+}
