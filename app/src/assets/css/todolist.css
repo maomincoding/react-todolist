@@ -53,17 +53,20 @@ li{
   color: #fff;
   cursor: pointer;
   overflow: hidden;
-  transition: .3s;
   padding:10px;
   margin: 20px 0;
-  animation: translate .5s ease-in;
 }
-@keyframes translate {
-  from{
-    translateX:-1000px;
+.ani{
+  animation: move .5s;
+}
+@keyframes move {
+  0%{
+   opacity: 0;
+   transform: translateX(-1000px);
   }
-  to{
-    translateX:0px;
+  100%{
+    opacity: 1;
+    transform:translateX(0px);
   }
 }
 li:hover{
