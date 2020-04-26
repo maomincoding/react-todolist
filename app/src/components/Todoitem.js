@@ -7,9 +7,10 @@ class Todoitem extends Component {
         this.handerClick=this.handerClick.bind(this);
     }
     render(){
-        const {item} = this.props;
+        console.log('render2')
+        const {item,text} = this.props;
         return (
-        <li className="ani" onClick={this.handerClick} >{item}</li>
+        <li className="ani" onClick={this.handerClick} >{text}—{item}</li>
         )
     }
     // 删除
@@ -19,9 +20,13 @@ class Todoitem extends Component {
     }
 } 
 Todoitem.propTypes = {
+    text: PropTypes.string.isRequired,
     item: PropTypes.string,
     index: PropTypes.number,
     deleteItem: PropTypes.func
+}
+Todoitem.defaultProps = {
+    text: 'Todoitem'
 }
 
 export default Todoitem

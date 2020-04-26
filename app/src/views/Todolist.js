@@ -1,9 +1,11 @@
 import React,{Component,Fragment} from 'react'
 import Todoitem from '../components/Todoitem'
+import Text from '../components/Text'
 import '../assets/css/todolist.css'
 class TodoList extends Component{
   constructor(props){
     super(props);
+    // 当state或者props发生改变的时候，render函数就会重新执行。
     this.handerClick=this.handerClick.bind(this);
     this.handerChange=this.handerChange.bind(this);
     this.delete=this.delete.bind(this);
@@ -13,6 +15,7 @@ class TodoList extends Component{
     }
   }
   render(){
+    console.log(this,'render')
     return (
       <Fragment>
         {/*头部*/}
@@ -26,6 +29,7 @@ class TodoList extends Component{
               onChange={this.handerChange}/>
            <button onClick={this.handerClick}>提交</button>
         </div>
+        <Text content={this.state.inputValue}/>  
         {/*列表*/}
         <ul className="list">
          {this.getItem()}
