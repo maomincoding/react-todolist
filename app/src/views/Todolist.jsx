@@ -49,8 +49,8 @@ export default  class TodoList extends React.Component{
   // 在组件被挂载到页面之后自动执行
   componentDidMount(){
     console.log('ComponentDidMount');
-    axios.get('/api/get/').then(()=>{
-      console.log('sussess')
+    axios.get('https://edu.qingyu.me/api/courses').then((res)=>{
+      console.log(res);
     }).catch(()=>{
       console.log('error');
     })
