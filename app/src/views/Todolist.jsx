@@ -1,6 +1,6 @@
 import React,{Fragment} from 'react'
 import Todoitem from '../components/Todoitem'
-import Text from '../components/Text'
+import Textarea from '../components/Textarea'
 import '../assets/css/todolist.css'
 
 export default  class TodoList extends React.Component{
@@ -16,7 +16,7 @@ export default  class TodoList extends React.Component{
     }
   }
   // 在组件即将被挂载到页面时自动执行
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     console.log('ComponnetWillMount');
   }
   // 当state或者props发生改变的时候，render函数就会重新执行。
@@ -24,7 +24,7 @@ export default  class TodoList extends React.Component{
     console.log('Render');
     return (
       <Fragment>
-        <Text content={this.state.inputValue}/>
+        <Textarea content={this.state.inputValue}/>
         {/*头部*/}
         <div className="header">
           {this.state.show?(
@@ -55,7 +55,7 @@ export default  class TodoList extends React.Component{
     return true;
   }
   // 组件被更新之前，他会自动被执行。但是他在shouldComponentUpdate之后被执行，如果shouldComponentUpdate返回true才会执行，否则不执行。
-  componentWillUpdate(){
+  UNSAFE_componentWillUpdate(){
     console.log('componentWillUpdate');
   }
   // 组件更新完成之后，他会被执行。
