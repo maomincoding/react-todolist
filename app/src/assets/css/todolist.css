@@ -38,7 +38,7 @@ input:focus {
   outline: none;
   border-color: #409eff;
 }
-.header,ul{
+.header,ul,.text{
   margin: 50px;
 }
 li{
@@ -71,4 +71,9 @@ li{
 }
 li:hover{
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+}
+.item-name{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 }

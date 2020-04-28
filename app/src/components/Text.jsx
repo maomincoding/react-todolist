@@ -1,15 +1,11 @@
-import React,{Component} from 'react'
+import React from 'react'
 
-class Text extends Component {
+export default class Text extends React.Component {
     constructor(props){
-        super(props)
-        this.state={
-
-        }
+        super(props);
+        this.state={};
     }
     render() {
-        return <div>{this.props.content}</div>
+        return  <div className="text">{this.props.content}</div>
     }
 }
-
-export default Text
