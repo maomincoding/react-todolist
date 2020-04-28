@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 export default class Todoitem extends React.Component {
     constructor(props){
         super(props);
-        this.handerClick=this.handerClick.bind(this);
+        this.handerClick=this.handerClick.bind(this); // 保证函数只绑定一次，还有保证子组件无谓的渲染
     }
     render(){
+        console.log('child render');
         const {item,text} = this.props;
         return (
         <li className="ani" onClick={this.handerClick} >
@@ -20,16 +21,21 @@ export default class Todoitem extends React.Component {
         const {index,deleteItem} = this.props;
         deleteItem(index);
     }
+    // 组件是否被更新
+    shouldComponentUpdate(nextProps,nextState){
+        // console.log('child shouldComponentUpdate');
+        return nextProps.item!==this.props.item?true:false;
+    }
     // 要同时满足下面两个条件才可以被执行：
     // 1、一个组件要从父组件接收参数;
     // 2、只要父组件的render函数被执行了，子组件的这个生命周期函数就会被执行
     // 第二点也可以这样说：如果这个组件第一次存在于父组件中，不会执行。如果这个组件之前已经存在于父组件中，才会执行。
     UNSAFE_componentWillReceiveProps(){
-        console.log('child componentWillReceiveProps');
+        // console.log('child componentWillReceiveProps');
     }
     // 当这个组件即将从页面中剔除的时候，会被执行。
     componentWillUnmount(){
-        console.log('child componentWillUnmount');
+        // console.log('child componentWillUnmount');
     }
 }
 

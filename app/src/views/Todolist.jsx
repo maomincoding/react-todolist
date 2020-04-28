@@ -1,4 +1,5 @@
 import React,{Fragment} from 'react'
+import axios from 'axios'
 import Todoitem from '../components/Todoitem'
 import Textarea from '../components/Textarea'
 import '../assets/css/todolist.css'
@@ -48,19 +49,25 @@ export default  class TodoList extends React.Component{
   // 在组件被挂载到页面之后自动执行
   componentDidMount(){
     console.log('ComponentDidMount');
+    axios.get('/api/get/').then(()=>{
+      console.log('sussess')
+    }).catch(()=>{
+      console.log('error');
+    })
+    // 推荐把ajax请求加在这个周期里，这样不至于写在render方法里，每次都请求。
   }
   // 组件被更新之前，他会自动被执行 (组件是否被更新吗？) 返回布尔类型[true:'需要被更新',false:'不需要被更新']
   shouldComponentUpdate(){
-    console.log('shouldComponentUpdate');
+    // console.log('shouldComponentUpdate');
     return true;
   }
   // 组件被更新之前，他会自动被执行。但是他在shouldComponentUpdate之后被执行，如果shouldComponentUpdate返回true才会执行，否则不执行。
   UNSAFE_componentWillUpdate(){
-    console.log('componentWillUpdate');
+    // console.log('componentWillUpdate');
   }
   // 组件更新完成之后，他会被执行。
   componentDidUpdate(){
-    console.log('componentDidUpdate');
+    // console.log('componentDidUpdate');
   }
   getItem(){
     return this.state.list.map((item,index) => {
@@ -84,7 +91,8 @@ export default  class TodoList extends React.Component{
       show:true,
       list:[...prevState.list,prevState.inputValue]
     }),()=>{
-      // setState是异步的，需要传个参数，执行完setState再执行下面的
+      // setState是异步的，可以把多次数据的改变合并成一次来做。降低虚拟DOM的比对频率。需要在第二项传个参数，
+      // 参数是一个回调函数。执行完setState再执行回调函数。
       // console.log(this.ul.querySelectorAll('li').length)
     });
   }
