@@ -7,7 +7,6 @@ class Todoitem extends Component {
         this.handerClick=this.handerClick.bind(this);
     }
     render(){
-        console.log('render2')
         const {item,text} = this.props;
         return (
         <li className="ani" onClick={this.handerClick} >{text}—{item}</li>

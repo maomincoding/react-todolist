@@ -8,7 +8,6 @@ class Text extends Component {
         }
     }
     render() {
-        console.log('render1')
         return <div>{this.props.content}</div>
     }
 }

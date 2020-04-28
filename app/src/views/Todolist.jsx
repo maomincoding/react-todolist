@@ -14,8 +14,12 @@ class TodoList extends Component{
       list:[]
     }
   }
+  // 在组件即将被挂载到页面时自动执行
+  componentWillMount(){
+    console.log('componnetWillMount');
+  }
   render(){
-    console.log(this,'render')
+    console.log(this.props);
     return (
       <Fragment>
         {/*头部*/}
@@ -31,11 +35,15 @@ class TodoList extends Component{
         </div>
         <Text content={this.state.inputValue}/>  
         {/*列表*/}
-        <ul className="list">
+        <ul className="list" ref={(ul)=>{this.ul=ul}}>
          {this.getItem()}
         </ul>
       </Fragment>
     )
+  }
+  // 在组件被挂载到页面之后自动执行
+  componentDidMount(){
+    console.log('componentDidMount');
   }
   getItem(){
     return this.state.list.map((item,index) => {
@@ -56,7 +64,9 @@ class TodoList extends Component{
     this.setState((prevState)=>({
       inputValue:"",
       list:[...prevState.list,prevState.inputValue]
-    }));
+    }),()=>{
+      console.log(this.ul.querySelectorAll('li').length)
+    });
   }
   // 删除
   delete(index){
