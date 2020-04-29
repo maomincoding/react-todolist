@@ -41,6 +41,56 @@ input:focus {
 .header,ul,.text{
   margin: 50px;
 }
+.fade-enter,.fade-appear{
+  opacity: 0;
+}
+.fade-enter-active,.fade-appear-active{
+  opacity: 1;
+  transition: all 1s ease-in;
+}
+.fade-enter-done{
+  opacity: 1;
+}
+.fade-exit{
+  opacity: 1;
+}
+.fade-exit-active{
+  opacity: 0;
+  transition: all 1s ease-in;
+}
+.fade-exit-done{
+  opacity: 0;
+}
+.save{
+  margin: 10px 50px;
+}
+.show{
+  color: #409eff;
+  opacity: 1;
+  animation: show-state 1s ease-in infinite;
+  margin: 10px 50px;
+  transition: all 1s ease-in;
+}
+.hide{
+  color: #409eff;
+  transition: all 1s ease-in;
+  opacity: 0;
+  margin: 10px 50px;
+}
+@keyframes show-state {
+  0%{
+    color: fuchsia;
+  }
+  25%{
+    color: greenyellow;
+  }
+  75%{
+    color: hotpink;
+  }
+  100%{
+    color: #409eff;
+  }
+}
 li{
   max-width: 1200px;
   height: auto;
@@ -77,4 +127,7 @@ li:hover{
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 5px;
+}
+.status{
+
 }

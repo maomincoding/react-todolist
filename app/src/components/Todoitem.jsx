@@ -7,10 +7,10 @@ export default class Todoitem extends React.Component {
         this.handerClick=this.handerClick.bind(this); // 保证函数只绑定一次，还有保证子组件无谓的渲染
     }
     render(){
-        console.log('child render');
+        // console.log('child render');
         const {item,text} = this.props;
         return (
-        <li className="ani" onClick={this.handerClick} >
+        <li  onClick={this.handerClick} >
             <p className="item-name">{text}</p>
             <p>{item}</p>
         </li>
