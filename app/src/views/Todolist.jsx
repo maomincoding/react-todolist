@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import Todoitem from '../components/Todoitem'
 import Textarea from '../components/Textarea'
 import '../assets/css/todolist.css'
@@ -49,17 +49,18 @@ export default class TodoList extends React.Component {
     // 在组件被挂载到页面之后自动执行
     componentDidMount() {
         console.log('ComponentDidMount');
-        axios.get('/api/todolist').then((res) => {
-            console.log(res);
-            this.setState(() => (
-                {
-                    list: [...res.data]
-                }
-            ))
-        }).catch(() => {
-            console.log('error');
-        })
-        // 推荐把ajax请求加在这个周期里，这样不至于写在render方法里，每次都请求。
+         // 推荐把ajax请求加在这个周期里，这样不至于写在render方法里，每次都请求。
+        // axios 请求示例
+        // axios.get('https://edu.qingyu.me/api/courses').then((res) => {
+        //     console.log(res.data.data.list);
+        //     this.setState(() => (
+        //         {
+        //             list: [...res.data.data.list]
+        //         }
+        //     ))
+        // }).catch(() => {
+        //     console.log('error');
+        // })
     }
     // 组件被更新之前，他会自动被执行 (组件是否被更新吗？) 返回布尔类型[true:'需要被更新',false:'不需要被更新']
     shouldComponentUpdate() {
