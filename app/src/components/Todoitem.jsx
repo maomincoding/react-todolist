@@ -24,7 +24,7 @@ export default class Todoitem extends React.Component {
     // 组件是否被更新
     shouldComponentUpdate(nextProps,nextState){
         // console.log('child shouldComponentUpdate');
-        return nextProps.item!==this.props.item?true:false;
+        return nextProps.item!==this.props.item;
     }
     // 要同时满足下面两个条件才可以被执行：
     // 1、一个组件要从父组件接收参数;
