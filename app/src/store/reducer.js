@@ -1,12 +1,12 @@
 import {CHANGE_INPUT_VALUE,CHANGE_ITEM_VALUE,DELETE_ITEM_VALUE} from './actionType' 
 
-// Reducer  存数据以及处理数据。 reducer可以接受state，但不能修改state。
+// Reducer  存数据以及处理数据。 reducer可以接受state，但不能修改state。 只有store可以改变自己的内容
 const defaultState = {
   inputValue:"",
   list:[]
 }
 
-// 首先必须返回函数
+// 首先必须返回纯函数，给定固定的输入，就一定会有固定的输出。而且不会有副作用.
 export default (state=defaultState,action) => {
   // input框内值
   if(action.type === CHANGE_INPUT_VALUE){
