@@ -1,39 +1,30 @@
 import React, { Component } from 'react'
-import { Button, Input, List , Divider } from 'antd'
 import store from '../../store/index'
 import {getInputChangeAction,getItemChangeAction,getItemDeleteAction} from '../../store/actionCreators'
+import TodoListUI from './TodoListUI'
 
 export default class TodoList extends Component {
   constructor(props){
     super(props);
     this.state = store.getState(); // 获取store
-
     this.handerChange = this.handerChange.bind(this);
     this.handerStateChange = this.handerStateChange.bind(this);
     this.handerClick = this.handerClick.bind(this);
+    this.delete = this.delete.bind(this);
 
     store.subscribe(this.handerStateChange) //  订阅 store store 只要发生改变。方法内的函数自动执行。
   }
   render() {
-    return (
-      <div style={{ margin: '20px' }}>
-        <Input value={this.state.inputValue}  placeholder="Basic usage" style={{ width: '300px' }}  onChange={this.handerChange}/>
-        <Button type="primary" style={{ marginLeft: '20px' }} onClick={this.handerClick}>提交</Button>
-        <Divider orientation="left">列表</Divider>
-        <List
-          bordered
-          dataSource={this.state.list}
-          renderItem={(item,index) => (
-            <List.Item onClick={this.delete.bind(this,index)}>
-              {item}
-            </List.Item>
-          )}
-        />
-      </div>
-    )
+    return <TodoListUI 
+     inputValue={this.state.inputValue}
+     handerChange={this.handerChange}
+     handerClick={this.handerClick}
+     list={this.state.list}
+     delete={this.delete}
+    />
   }
   // 组件更新状态
-    handerStateChange(){
+  handerStateChange(){
       this.setState(store.getState()); // 重新获取store，组件更新状态，替换原来的数据
   }
   // input值检测
@@ -50,6 +41,7 @@ export default class TodoList extends Component {
   }
   // 删除
   delete(i){
+    console.log(i)
     // 创建action
     const action = getItemDeleteAction(i)
     store.dispatch(action); // 将action 传给store 
