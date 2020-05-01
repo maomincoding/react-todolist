@@ -1,4 +1,4 @@
-import {CHANGE_INPUT_VALUE,CHANGE_ITEM_VALUE,DELETE_ITEM_VALUE} from './actionType' 
+import {CHANGE_INPUT_VALUE,CHANGE_ITEM_VALUE,DELETE_ITEM_VALUE,ADD_ITEM_VALUE} from './actionType' 
 
 // Reducer  存数据以及处理数据。 reducer可以接受state，但不能修改state。 只有store可以改变自己的内容, 所以下面深拷贝一个副本。
 const defaultState = {
@@ -25,6 +25,12 @@ export default (state=defaultState,action) => {
   if(action.type === DELETE_ITEM_VALUE){
     const newState = JSON.parse(JSON.stringify(state)); // 深拷贝
     newState.list.splice(action.i,1);
+    return newState
+  }
+  // 模拟获取后台数据渲染列表
+  if(action.type === ADD_ITEM_VALUE){
+    const newState = JSON.parse(JSON.stringify(state)); // 深拷贝
+    newState.list=action.data;
     return newState
   }
   return state //初始化

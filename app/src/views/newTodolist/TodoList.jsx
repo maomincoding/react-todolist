@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import store from '../../store/index'
-import {getInputChangeAction,getItemChangeAction,getItemDeleteAction} from '../../store/actionCreators'
+import {getInputChangeAction,getItemChangeAction,getItemDeleteAction,getListValue} from '../../store/actionCreators'
 import TodoListUI from './TodoListUI'
+import axios from 'axios'
 
 export default class TodoList extends Component {
   constructor(props){
@@ -48,6 +49,12 @@ export default class TodoList extends Component {
   }
   // 组件挂载之后
   componentDidMount() {
-    document.title = "使用Ant 搭建TodoList"
+    document.title = "使用Ant 搭建TodoList";
+    axios.get('/api').then((res)=>{
+      console.log(res.data);
+      const data = res.data;
+      const action = getListValue(data);
+      store.dispatch(action);
+    })
   }
 }
