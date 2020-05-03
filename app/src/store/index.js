@@ -1,11 +1,16 @@
-import {createStore} from 'redux'
+import {createStore,applyMiddleware,compose} from 'redux'
+import thunk from 'redux-thunk'
 import reducer from './reducer'
  
-// 第二个参数是浏览器安装了Redux tools 需要加上。
-const store = createStore(
-  reducer, 
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// redux-devtools 配置
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+
+const enhancer = composeEnhancers(
+  // 使用中间件 thunk
+  applyMiddleware(thunk)
 );
+const store = createStore(reducer, enhancer);
 
 export default store
 
